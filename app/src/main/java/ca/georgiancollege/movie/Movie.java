@@ -4,6 +4,10 @@ public class Movie {
     private final String title;
     private final String year;
     private final String posterUrl;
+    private String imdbID;
+    private String director;
+    private String rating;
+    private String plot;
 
     public Movie(String title, String year, String posterUrl) {
         this.title = title;
