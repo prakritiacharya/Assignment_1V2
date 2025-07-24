@@ -10,4 +10,7 @@ public class Movie {
         this.year = year;
         this.posterUrl = posterUrl;
     }
+    public String getTitle() { return title; }
+    public String getYear() { return year; }
+    public String getPosterUrl() { return posterUrl; }
 }
