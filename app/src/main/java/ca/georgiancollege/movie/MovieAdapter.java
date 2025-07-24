@@ -8,3 +8,9 @@ import java.util.List;
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
     private List<Movie> movies = new ArrayList<>();
 }
+
+public void setMovies(List<Movie> movies) {
+    this.movies = movies;
+    notifyDataSetChanged();
+}
+
