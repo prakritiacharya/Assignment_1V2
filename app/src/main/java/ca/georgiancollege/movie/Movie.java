@@ -4,7 +4,7 @@ public class Movie {
     private final String title;
     private final String year;
     private final String posterUrl;
-    private String imdbID;
+    private final String imdbID;
     private String director;
     private String rating;
     private String plot;
@@ -19,4 +19,14 @@ public class Movie {
     public String getTitle() { return title; }
     public String getYear() { return year; }
     public String getPosterUrl() { return posterUrl; }
+    public String getImdbID() { return imdbID; }
+
+    public String getDirector() { return director; }
+    public void setDirector(String director) { this.director = director; }
+
+    public String getRating() { return rating; }
+    public void setRating(String rating) { this.rating = rating; }
+
+    public String getPlot() { return plot; }
+    public void setPlot(String plot) { this.plot = plot; }
 }
