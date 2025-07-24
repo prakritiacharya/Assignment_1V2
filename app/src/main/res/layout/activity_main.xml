@@ -12,7 +12,7 @@ tools:context=".MainActivity">
 <View
     android:id="@+id/topDivider"
     android:layout_width="match_parent"
-    android:layout_height="@dimens/divider_height"
+    android:layout_height="@dimen/divider_height"
     android:background="?android:attr/listDivider"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,7 @@ tools:context=".MainActivity">
 <View
     android:id="@+id/middleDivider"
     android:layout_width="match_parent"
-    android:layout_height="@dimens/divider_height"
+    android:layout_height="@dimen/element_margin"
     android:background="?android:attr/listDivider"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -49,7 +49,7 @@ tools:context=".MainActivity">
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/movie_app"
-        android:textSize="@dimens/title_font_size"
+        android:textSize="@dimen/title_font_size"
         android:textStyle="bold" />
 </LinearLayout>
 
@@ -71,7 +71,7 @@ tools:context=".MainActivity">
         android:id="@+id/edit_search"
         android:layout_width="269dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimens/element_margin"
+        android:layout_margin="@dimen/element_margin"
         android:background="@android:drawable/edit_text"
         android:ems="20"
         android:hint="@string/search"
