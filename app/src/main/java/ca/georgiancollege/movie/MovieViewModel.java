@@ -26,7 +26,7 @@ public class MovieViewModel extends ViewModel {
     }
 
     public void fetchMovies(String query) {
-        String apiKey = "YOUR_API_KEY";  // Replace with your OMDb API key
+        String apiKey = "77ef3890";
         String url = "https://www.omdbapi.com/?apikey=" + apiKey + "&s=" + query;
 
         Request request = new Request.Builder().url(url).build();
