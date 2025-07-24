@@ -1,4 +1,4 @@
-package ca.georgiancollege.movie_app;
+package ca.georgiancollege.movie;
 
 import android.view.LayoutInflater;
 import android.view.View;
