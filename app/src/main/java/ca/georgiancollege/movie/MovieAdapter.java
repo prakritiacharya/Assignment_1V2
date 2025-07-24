@@ -1,5 +1,10 @@
 package ca.georgiancollege.movie;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -22,3 +27,10 @@ public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewTyp
     return new MovieViewHolder(view);
 }
 
+@Override
+public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
+    Movie movie = movies.get(position);
+    holder.title.setText(movie.getTitle());
+    holder.year.setText(movie.getYear());
+    Picasso.get().load(movie.getPosterUrl()).into(holder.poster);
+}
