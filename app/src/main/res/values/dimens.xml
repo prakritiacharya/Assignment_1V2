@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources></resources><?xml version="1.0" encoding="utf-8"?>
+<resources>
+<dimen name="divider_height">1dp</dimen>
+<dimen name="title_font_size">22sp</dimen>
+<dimen name="element_margin">6dp</dimen>
+</resources>
