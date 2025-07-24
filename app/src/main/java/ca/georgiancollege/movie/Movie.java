@@ -10,3 +10,4 @@ public class Movie {
         this.year = year;
         this.posterUrl = posterUrl;
     }
+}
