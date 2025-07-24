@@ -18,6 +18,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class MovieViewModel extends ViewModel {
+
     private final MutableLiveData<List<Movie>> movies = new MutableLiveData<>();
     private final OkHttpClient client = new OkHttpClient();
 
@@ -36,29 +37,85 @@ public class MovieViewModel extends ViewModel {
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
             }
+
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()) {
                     try {
                         JSONObject json = new JSONObject(response.body().string());
-                        JSONArray results = json.getJSONArray("Search");
-                        List<Movie> movieList = new ArrayList<>();
+                        if (json.has("Search")) {
+                            JSONArray results = json.getJSONArray("Search");
+                            List<Movie> movieList = new ArrayList<>();
 
-                        for (int i = 0; i < results.length(); i++) {
-                            JSONObject item = results.getJSONObject(i);
-                            Movie movie = new Movie(
-                                    item.getString("Title"),
-                                    item.getString("Year"),
-                                    item.getString("Poster")
-                            );
-                            movieList.add(movie);
+                            for (int i = 0; i < results.length(); i++) {
+                                JSONObject item = results.getJSONObject(i);
+                                Movie movie = new Movie(
+                                        item.getString("Title"),
+                                        item.getString("Year"),
+                                        item.getString("Poster"),
+                                        item.getString("imdbID")
+                                );
+                                movieList.add(movie);
+                            }
+                            movies.postValue(movieList);
+                        } else {
+                            movies.postValue(new ArrayList<>());
                         }
-                        movies.postValue(movieList);
                     } catch (Exception e) {
                         e.printStackTrace();
+                        movies.postValue(new ArrayList<>());
                     }
                 }
             }
         });
     }
+
+    public void fetchMovieDetails(String imdbID, MovieDetailsCallback callback) {
+        String apiKey = "77ef3890";
+        String url = "https://www.omdbapi.com/?apikey=" + apiKey + "&i=" + imdbID + "&plot=full";
+
+        Request request = new Request.Builder().url(url).build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+                callback.onFailure(e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    try {
+                        JSONObject json = new JSONObject(response.body().string());
+
+                        // Parse full details
+                        Movie movie = new Movie(
+                                json.getString("Title"),
+                                json.getString("Year"),
+                                json.getString("Poster"),
+                                json.getString("imdbID")
+                        );
+                        movie.setDirector(json.optString("Director", "N/A"));
+                        movie.setRating(json.optString("imdbRating", "N/A"));
+                        movie.setPlot(json.optString("Plot", "N/A"));
+
+                        callback.onSuccess(movie);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        callback.onFailure(e);
+                    }
+                } else {
+                    callback.onFailure(new IOException("Response not successful"));
+                }
+            }
+        });
+    }
+
+    public interface MovieDetailsCallback {
+        void onSuccess(Movie movie);
+        void onFailure(Exception e);
+    }
 }
+
+
