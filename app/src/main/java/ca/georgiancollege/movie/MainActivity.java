@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(MovieViewModel.class);
 
-        binding.searchButton.setOnClickListener(v -> {
-            String query = binding.movieInput.getText().toString();
+        binding.btnSearch.setOnClickListener(v -> {
+            String query = binding.editSearch.getText().toString();
             if (TextUtils.isEmpty(query)) {
                 Toast.makeText(this, "Enter a movie name", Toast.LENGTH_SHORT).show();
             } else {
