@@ -2,6 +2,7 @@ package ca.georgiancollege.movie;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        viewModel.getMovies().observe(this, movies -> adapter.setMovies(movies));
+        viewModel.getMovies().observe(this, movies -> {
+            Log.d("MainActivity", "Movies received: " + movies.size());
+            adapter.setMovies(movies);
+        });
+
     }
 }

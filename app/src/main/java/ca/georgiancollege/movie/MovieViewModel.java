@@ -16,6 +16,7 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import android.util.Log;
 
 public class MovieViewModel extends ViewModel {
 
@@ -57,6 +58,7 @@ public class MovieViewModel extends ViewModel {
                                 );
                                 movieList.add(movie);
                             }
+                            Log.d("MovieViewModel", "Movies found: " + movieList.size());
                             movies.postValue(movieList);
                         } else {
                             movies.postValue(new ArrayList<>());

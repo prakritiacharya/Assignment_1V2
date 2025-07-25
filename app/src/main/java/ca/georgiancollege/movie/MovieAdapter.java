@@ -2,6 +2,7 @@ package ca.georgiancollege.movie;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
@@ -25,11 +27,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     public MovieAdapter(Context context, MovieViewModel viewModel) {
         this.context = context;
         this.viewModel = viewModel;
+        this.movies = new ArrayList<>();
+        Log.d("MovieAdapter", "Initialized movies with size: " + movies.size());
     }
 
     public void setMovies(List<Movie> movies) {
         this.movies = movies;
-        notifyDataSetChanged();
+        Log.d("MovieAdapter", "Adapter updated with " + movies.size() + " movies");
+        notifyDataSetChanged(); // refresh listd
     }
 
     @NonNull
@@ -41,7 +46,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
-        Movie movie = movies.get(position);
+        Movie movie = movies.get(position); // holds views
 
         holder.title.setText(movie.getTitle());
         holder.year.setText(movie.getYear());
@@ -80,7 +85,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     @Override
     public int getItemCount() {
         return movies == null ? 0 : movies.size();
-    }
+    } // get full list size return
 
     static class MovieViewHolder extends RecyclerView.ViewHolder {
         TextView title, year;

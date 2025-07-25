@@ -1,104 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:id="@+id/main"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".MainActivity">
-
-
-<View
-    android:id="@+id/topDivider"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/divider_height"
-    android:background="?android:attr/listDivider"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.183" />
+    android:layout_height="match_parent"
+    android:background="@color/background">
 
-<View
-    android:id="@+id/middleDivider"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/element_margin"
-    android:background="?android:attr/listDivider"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="1.0"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.958" />
-
-<LinearLayout
-    android:id="@+id/titleLinearLayout"
-    android:layout_width="121dp"
-    android:layout_height="38dp"
-    android:orientation="horizontal"
-    app:layout_constraintBottom_toTopOf="@+id/searchLayout"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.75">
-
-    <TextView
-        android:id="@+id/titleLabelEditText"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/movie_app"
-        android:textSize="@dimen/title_font_size"
-        android:textStyle="bold" />
-</LinearLayout>
-
-<LinearLayout
-    android:id="@+id/searchLayout"
-    android:layout_width="391dp"
-    android:layout_height="55dp"
-    android:orientation="horizontal"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.461"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.110000014">
-
-    <!-- Search Button -->
-
-    <EditText
-        android:id="@+id/edit_search"
-        android:layout_width="269dp"
+    <LinearLayout
+        android:id="@+id/titleLinearLayout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/element_margin"
-        android:background="@android:drawable/edit_text"
-        android:ems="20"
-        android:hint="@string/search"
-        android:importantForAutofill="no"
-        android:inputType="text"
-        android:padding="12dp" />
+        android:layout_marginTop="@dimen/margin_standard"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_standard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/btn_search"
-        android:layout_width="98dp"
-        android:layout_height="44dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/btn_search" />
+        <TextView
+            android:id="@+id/titleLabelEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="@dimen/text_size_title"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold" />
+    </LinearLayout>
 
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/searchLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_standard"
+        app:layout_constraintTop_toBottomOf="@id/titleLinearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <EditText
+            android:id="@+id/edit_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/search_background"
+            android:ems="20"
+            android:hint="@string/search_hint"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:padding="@dimen/edit_text_padding" />
+
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search_button"
+            android:layout_marginStart="@dimen/padding_small" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMovies"
-        android:layout_width="360dp"
-        android:layout_height="468dp"
-        android:padding="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/padding_small"
+        app:layout_constraintTop_toBottomOf="@id/searchLayout"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.313"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleLinearLayout"
-        app:layout_constraintVertical_bias="0.393"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:listitem="@layout/item_movie" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
