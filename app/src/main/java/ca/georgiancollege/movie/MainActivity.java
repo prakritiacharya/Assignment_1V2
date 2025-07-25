@@ -23,16 +23,16 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        adapter = new MovieAdapter();
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        binding.recyclerView.setAdapter(adapter);
-
         viewModel = new ViewModelProvider(this).get(MovieViewModel.class);
+
+        adapter = new MovieAdapter(this, viewModel);
+        binding.rvMovies.setLayoutManager(new LinearLayoutManager(this));
+        binding.rvMovies.setAdapter(adapter);
 
         binding.btnSearch.setOnClickListener(v -> {
             String query = binding.editSearch.getText().toString();
             if (TextUtils.isEmpty(query)) {
-                Toast.makeText(this, "Enter a movie name", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Please enter a movie name", Toast.LENGTH_SHORT).show();
             } else {
                 viewModel.fetchMovies(query);
             }

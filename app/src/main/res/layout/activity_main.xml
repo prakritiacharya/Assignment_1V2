@@ -88,17 +88,17 @@ tools:context=".MainActivity">
 </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="381dp"
-        android:layout_height="546dp"
-        android:clipToPadding="false"
+        android:id="@+id/rvMovies"
+        android:layout_width="360dp"
+        android:layout_height="468dp"
         android:padding="8dp"
-        android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.313"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchLayout"
-        app:layout_constraintVertical_bias="0.232" />
+        app:layout_constraintTop_toBottomOf="@+id/titleLinearLayout"
+        app:layout_constraintVertical_bias="0.393"
+        tools:listitem="@layout/item_movie" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
