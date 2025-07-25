@@ -45,6 +45,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/search_background"
+            android:textColor="@color/text_primary"
+
             android:ems="20"
             android:hint="@string/search_hint"
             android:importantForAutofill="no"
@@ -64,6 +66,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="@dimen/padding_small"
+        android:background="@color/recycler_background"
         app:layout_constraintTop_toBottomOf="@id/searchLayout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="background">#FFFFFF</color>
-    <color name="text_primary">#000000</color>
-    <color name="search_background">#F0F0F0</color>
+
+    <color name="background">#121212</color>
+    <color name="search_background">#232121</color>
+    <color name="text_primary">#E0E0E0</color>
+    <color name="text_secondary">#948989</color>
+    <color name="button_background">#BB86FC</color>
+    <color name="button_text">#121212</color>
+    <color name="recycler_background">#181818</color>
+    <color name="black">#121212</color>
+    <color name="white">#FFFFFF</color>
+    <color name="light_gray">#CCCCCC</color>
 </resources>

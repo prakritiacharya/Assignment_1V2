@@ -3,4 +3,11 @@
     <string name="search_hint">Search</string>
     <string name="search_button">Search</string>
     <string name="poster">Poster</string>
+    <string name="poster_image">Poster image</string>
+    <string name="watch_now">Watch Now</string>
+    <string name="title">Movie Title</string>
+    <string name="director">Director</string>
+    <string name="year">Release Year</string>
+    <string name="rating">Rating</string>
+    <string name="plot">Plot Summary</string>
 </resources>
